@@ -1,15 +1,12 @@
-version: '3'
+version: '1.0'
 
 services:
   redis:
-    image: redis
+    image: redis:latest
     restart: always
-    environment:
-      REDIS_PASSWORD: 
     ports:
       - "6379:6379"
     volumes:
-      - redis_data:/data
-
-volumes:
-  redis_data:
+      - /usr/futabario/apps/redis/datadir:/data
+      - /usr/futabario/apps/redis/conf/redis.conf:/conf/redis.conf
+      - /usr/futabario/apps/redis/logs:/logs
